@@ -1,5 +1,5 @@
 const LINKS = {
-  download: "https://release-assets.githubusercontent.com/github-production-release-asset/1174207851/08aec3e7-a569-4ced-8321-d518fbeb7b60?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-03-06T08%3A33%3A10Z&rscd=attachment%3B+filename%3DChudWare-1.0.4.jar&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-03-06T07%3A32%3A41Z&ske=2026-03-06T08%3A33%3A10Z&sks=b&skv=2018-11-09&sig=BsC8KRsDACFrMTC%2FqLeFEG3tS2nbyzwpL0YywDdNwdo%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3Mjc4MzEyNSwibmJmIjoxNzcyNzgyODI1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.WvoZqbsIEDt3_vhb7RI2EVuKTv3ti6Fffv2KkRCc984&response-content-disposition=attachment%3B%20filename%3DChudWare-1.0.4.jar&response-content-type=application%2Foctet-stream",
+  download: "https://github.com/lethalfart/ChudWare/releases/download/v1.0.4/ChudWare-1.0.4.jar",
   discord: "https://discord.gg/GgSekSqvfS",
   source: "https://github.com/lethalfart/ChudWare"
 };
