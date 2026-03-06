@@ -28,12 +28,30 @@ if (music && musicToggle && musicIcon) {
     musicToggle.title = label;
   };
 
-  const tryStartMusic = () => {
-    music.play().catch(() => {
-      // Browser blocked autoplay with sound. First user interaction will start it.
-    });
+  const tryStartMusic = async () => {
+    try {
+      music.muted = false;
+      await music.play();
+      updateMusicUI();
+      return true;
+    } catch (_) {
+      try {
+        // Fallback: start muted first (often autoplay-allowed), then unmute.
+        music.muted = true;
+        await music.play();
+        music.muted = false;
+        updateMusicUI();
+        return true;
+      } catch (__unused) {
+        updateMusicUI();
+        return false;
+      }
+    }
   };
 
+  music.autoplay = true;
+  music.loop = true;
+  music.playsInline = true;
   music.muted = false;
   music.volume = 0.6;
   updateMusicUI();
@@ -48,7 +66,13 @@ if (music && musicToggle && musicIcon) {
   window.addEventListener("pointerdown", startOnInteraction, { once: true });
   window.addEventListener("keydown", startOnInteraction, { once: true });
 
-  musicToggle.addEventListener("click", () => {
+  musicToggle.addEventListener("click", async () => {
+    // If blocked and currently unmuted, first click should start playback directly.
+    if (music.paused && !music.muted) {
+      await tryStartMusic();
+      return;
+    }
+
     music.muted = !music.muted;
     if (!music.muted && music.paused) tryStartMusic();
     updateMusicUI();
