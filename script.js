@@ -15,6 +15,46 @@ for (const [id, href] of linkMap) {
   if (element) element.href = href;
 }
 
+const music = document.getElementById("bg-music");
+const musicToggle = document.getElementById("music-toggle");
+const musicIcon = document.getElementById("music-icon");
+
+if (music && musicToggle && musicIcon) {
+  const updateMusicUI = () => {
+    const isMuted = music.muted;
+    musicIcon.textContent = isMuted ? "🔇" : "🔊";
+    const label = isMuted ? "Unmute background music" : "Mute background music";
+    musicToggle.setAttribute("aria-label", label);
+    musicToggle.title = label;
+  };
+
+  const tryStartMusic = () => {
+    music.play().catch(() => {
+      // Browser blocked autoplay with sound. First user interaction will start it.
+    });
+  };
+
+  music.muted = false;
+  music.volume = 0.6;
+  updateMusicUI();
+  tryStartMusic();
+
+  const startOnInteraction = () => {
+    if (music.paused) tryStartMusic();
+    window.removeEventListener("pointerdown", startOnInteraction);
+    window.removeEventListener("keydown", startOnInteraction);
+  };
+
+  window.addEventListener("pointerdown", startOnInteraction, { once: true });
+  window.addEventListener("keydown", startOnInteraction, { once: true });
+
+  musicToggle.addEventListener("click", () => {
+    music.muted = !music.muted;
+    if (!music.muted && music.paused) tryStartMusic();
+    updateMusicUI();
+  });
+}
+
 const rainLayer = document.querySelector(".rain");
 if (rainLayer) {
   const dropCount = 90;
