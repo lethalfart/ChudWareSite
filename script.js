@@ -35,17 +35,10 @@ if (music && musicToggle && musicIcon) {
       updateMusicUI();
       return true;
     } catch (_) {
-      try {
-        // Fallback: start muted first (often autoplay-allowed), then unmute.
-        music.muted = true;
-        await music.play();
-        music.muted = false;
-        updateMusicUI();
-        return true;
-      } catch (__unused) {
-        updateMusicUI();
-        return false;
-      }
+      // Keep default state unmuted. If blocked, wait for user interaction.
+      music.muted = false;
+      updateMusicUI();
+      return false;
     }
   };
 
