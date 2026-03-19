@@ -1,5 +1,5 @@
 const LINKS = {
-  download: "https://github.com/lethalfart/ChudWare/releases/download/v1.0.6/ChudWare-1.0.6.jar",
+  download: "https://github.com/lethalfart/ChudWare/releases/download/v2.0.0/ChudWare-2.0.0.jar",
   discord: "https://discord.gg/GgSekSqvfS",
   source: "https://github.com/lethalfart/ChudWare"
 };
